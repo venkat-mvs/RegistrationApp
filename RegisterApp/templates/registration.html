@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        .errorlist{
+                list-style-type: none;
+                color:red;
+        }
+        /* @media only screen and (min-width:600px){ */
+            .container{
+                width:70%;
+                margin:0 auto;
+            }
+            .jumbotron{
+                padding:10px;
+                text-align: left;
+                margin: 0 15%;
+            }
+            .jumbotron h1{
+                font-size:200%;
+            }
+            form{
+                width:90%;
+            }
+            form label{
+                font-size:3vh;
+            }
+            form input{
+                width:100%;
+                height:3vh;
+                font-size:1em;
+            }
+            .row{
+                margin:10px 0;
+            }
+            form textarea{
+                width:100%;
+                font-size:1em;
+            }
+            form input[type="submit"]{
+                width:30%;
+                margin:0 auto;
+                text-align:center;
+            }
+
+
+        /* } */
+    </style>
+
+</head>
+<body>
+    <main>
+    <div class="jumbotron">
+        <h1>Introductory session for Made in India Engineers(MIIE)</h1>
+        <p>To discuss more about MIIE I am requesting  you to register to be a part of discussion in virtual zoom meeting.</p>
+    </div>
+    <div class="container">
+    <form action="" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="row">
+            <div class="col">
+            {{ field.label_tag }}
+            </div>
+            <div class="col"> 
+                {{ field }}
+                {{ field.errors }}
+            </div>
+            {% if field.help_text %}
+            <p class="help">{{ field.help_text|safe }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <input type="submit" value="Submit">
+    </form>
+    </div>
+    </main>
+</body>
+</html>
+
+
